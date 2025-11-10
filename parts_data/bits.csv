@@ -2,3 +2,11 @@ name,full_name,type
 LR,Low Rush,attack
 N,Needle,defense
 V,Vortex,attack
+A,Accel,attack
+HN,High Needle,defense
+O,Orb,stamina
+F,Flat,attack
+D,Dot,defense
+B,Ball,stamina
+GP,Gear Point,balance
+DB,Disk Ball,stamina
