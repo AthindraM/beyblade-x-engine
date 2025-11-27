@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
-void createCombo() {
+void createCombo(std::vector<std::string>& vec) {
 	std::cout << "\nEnter the parts you want to combine:\n";
 
 	std::cout << "Blade: ";
@@ -18,11 +19,26 @@ void createCombo() {
 	
 	std::string combo {blade + ' ' + ratchet + bit};
 	std::cout << "\nYour combo is:\n" << combo << '\n';
+
+	std::cout << "\nWould you like to save your combo? (Y/n) ";
+	char saveChoice {};
+	std::cin >> saveChoice;
+	if (saveChoice == 'Y' || saveChoice == 'y') {
+		std::cout << "Your combo is saved!\n";
+		vec.push_back(combo);
+	}
 }
 
-void viewCombos() { std::cout << "\ncoming soon!\n"; }
+void viewCombos(std::vector<std::string>& vec) {
+	std::cout << "\nSaved Combos:\n";
+	for (std::string& str : vec) {
+		std::cout << str << '\n';
+	}	
+}
 
 int main() {
+	std::vector<std::string> savedCombos {};
+
 	bool running {true};
 	while (running) {
 		std::cout << "\n[--- BEYBLADE X ENGINE ---]\n";
@@ -32,11 +48,11 @@ int main() {
 		std::cin >> choice;
 		switch (choice) {
 			case 1: {
-				createCombo();
+				createCombo(savedCombos);
 				break;
 			}
 			case 2: {
-				viewCombos();
+				viewCombos(savedCombos);
 				break;
 			}
 			case 3: {
