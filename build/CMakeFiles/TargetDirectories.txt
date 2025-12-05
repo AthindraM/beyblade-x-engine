@@ -1,3 +1,0 @@
-/Users/athindramitra/dev/Projects/beyblade-x-engine/build/CMakeFiles/beyblade-x-engine.dir
-/Users/athindramitra/dev/Projects/beyblade-x-engine/build/CMakeFiles/edit_cache.dir
-/Users/athindramitra/dev/Projects/beyblade-x-engine/build/CMakeFiles/rebuild_cache.dir
