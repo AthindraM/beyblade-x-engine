@@ -17,8 +17,12 @@ Makefile
 *.so
 *.dylib
 
+# JetBrains IDEs
+.idea/
+
+# Visual Studio
+.vs/
+
 __pycache__
 .DS_Store
 
-# JetBrains IDEs
-.idea/
