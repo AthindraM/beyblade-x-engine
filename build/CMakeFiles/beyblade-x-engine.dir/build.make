@@ -76,15 +76,15 @@ CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o: CMakeFiles/beyblade-x-engine.di
 CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o: /Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp
 CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o: CMakeFiles/beyblade-x-engine.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/athindramitra/dev/Projects/beyblade-x-engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o -MF CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o.d -o CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o -c /Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o -MF CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o.d -o CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o -c /Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp
 
 CMakeFiles/beyblade-x-engine.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/beyblade-x-engine.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp > CMakeFiles/beyblade-x-engine.dir/src/main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp > CMakeFiles/beyblade-x-engine.dir/src/main.cpp.i
 
 CMakeFiles/beyblade-x-engine.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/beyblade-x-engine.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp -o CMakeFiles/beyblade-x-engine.dir/src/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp -o CMakeFiles/beyblade-x-engine.dir/src/main.cpp.s
 
 # Object files for target beyblade-x-engine
 beyblade__x__engine_OBJECTS = \
