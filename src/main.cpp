@@ -42,7 +42,9 @@ int main() {
 	bool running {true};
 	while (running) {
 		std::cout << "\n[--- BEYBLADE X ENGINE ---]\n";
+		std::cout << "===========================\n";
 		std::cout << "1. Create Combo\n2. View Saved Combos\n3. Exit\n";
+		std::cout << "===========================\n";
 	
 		int choice {};
 		std::cin >> choice;
