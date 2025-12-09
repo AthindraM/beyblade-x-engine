@@ -30,10 +30,13 @@ void createCombo(std::vector<std::string>& vec) {
 }
 
 void viewCombos(std::vector<std::string>& vec) {
-	std::cout << "\nSaved Combos:\n";
-	for (std::string& str : vec) {
-		std::cout << str << '\n';
-	}	
+	if (!vec.empty()) {
+		std::cout << "\nSaved Combos:\n";
+		for (std::string& str : vec)
+			std::cout << str << '\n';
+	}
+	else
+		std::cout << "\nNo saved combos.\n";
 }
 
 int main() {
