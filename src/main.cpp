@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 void createCombo(std::vector<std::string>& vec) {
 	std::cout << "\nEnter the parts you want to combine:\n";
@@ -29,14 +30,38 @@ void createCombo(std::vector<std::string>& vec) {
 	}
 }
 
-void viewCombos(std::vector<std::string>& vec) {
-	if (!vec.empty()) {
-		std::cout << "\nSaved Combos:\n";
-		for (std::string& str : vec)
-			std::cout << str << '\n';
+void exportCombo(std::vector<std::string>& vec, std::string filename) {
+	filename += ".txt";
+	std::ofstream outf{ filename };
+	
+	if (!outf) {
+		std::cerr << "\n---ERROR---\n| " << filename << " couldn't be generated!\n-----------\n";
+		return;
 	}
-	else
+	for (const auto& str : vec)
+		outf << str << '\n';
+
+	std::cout << "\nCombo exported! (" << filename << ")\n";
+}
+
+void viewCombos(std::vector<std::string>& vec) {
+	if (vec.empty())
 		std::cout << "\nNo saved combos.\n";
+
+	std::cout << "\nSaved Combos:\n";
+	for (const auto& str : vec)
+		std::cout << str << '\n';
+
+	std::cout << "\nWould you like to export your saved combos? (Y/n)\n";
+	char exportChoice {};
+	std::cin >> exportChoice;
+	if (exportChoice == 'Y' || exportChoice == 'y') {
+		std::cout << "\nWhat would you like this deck to be called?\n";
+		std::string exportFilename{};
+		std::getline(std::cin >> std::ws, exportFilename);
+
+		exportCombo(vec, exportFilename);
+	}
 }
 
 int main() {
