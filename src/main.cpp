@@ -41,7 +41,7 @@ void createCombo(std::vector<std::string>& vec) {
 }
 
 void exportCombo(std::vector<std::string>& vec, std::string filename) {
-	std::filesystem::path filepath = std::filesystem::path("save_files") / std::filesystem::path(filename + ".txt");
+	std::filesystem::path filepath = std::filesystem::path("saved_decks") / std::filesystem::path(filename + ".txt");
 	std::ofstream outf{ filepath.string() };
 	
 	if (!outf) {
