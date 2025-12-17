@@ -2,6 +2,16 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <filesystem>
+
+void listSavedDecks() {
+	std::cout << "\nSaved Decks:\n";
+	int count {1};
+	for (const auto& deck : std::filesystem::directory_iterator("saved_decks")) {
+		if (deck.is_regular_file() && deck.path().extension() == ".txt")
+			std::cout << count++ << ". " << deck.path().filename() << '\n';
+	}
+}
 
 void createCombo(std::vector<std::string>& vec) {
 	std::cout << "\nEnter the parts you want to combine:\n";
@@ -31,26 +41,29 @@ void createCombo(std::vector<std::string>& vec) {
 }
 
 void exportCombo(std::vector<std::string>& vec, std::string filename) {
-	filename += ".txt";
-	std::ofstream outf{ filename };
+	std::filesystem::path filepath = std::filesystem::path("save_files") / std::filesystem::path(filename + ".txt");
+	std::ofstream outf{ filepath.string() };
 	
 	if (!outf) {
-		std::cerr << "\n---ERROR---\n| " << filename << " couldn't be generated!\n-----------\n";
+		std::cerr << "\n---ERROR---\n| " << filepath << " couldn't be generated!\n-----------\n";
 		return;
 	}
 	for (const auto& str : vec)
 		outf << str << '\n';
 
-	std::cout << "\nCombo exported! (" << filename << ")\n";
+	std::cout << "\nCombo exported! (" << filepath.filename() << ")\n";
 }
 
 void viewCombos(std::vector<std::string>& vec) {
 	if (vec.empty())
 		std::cout << "\nNo saved combos.\n";
+	else {
+		std::cout << "\nCurrent Saved Combos:\n";
+		for (const auto& str : vec)
+			std::cout << '\t' << str << '\n';
+	}
 
-	std::cout << "\nSaved Combos:\n";
-	for (const auto& str : vec)
-		std::cout << str << '\n';
+	listSavedDecks();
 
 	std::cout << "\nWould you like to export your saved combos? (Y/n)\n";
 	char exportChoice {};
@@ -65,6 +78,8 @@ void viewCombos(std::vector<std::string>& vec) {
 }
 
 int main() {
+
+	std::filesystem::create_directories("saved_decks");
 	std::vector<std::string> savedCombos {};
 
 	bool running {true};
