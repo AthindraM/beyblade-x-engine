@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <filesystem>
+#include <cctype>
 
 void listSavedDecks() {
 	std::cout << "\nSaved Decks:\n";
@@ -59,21 +60,34 @@ void viewCombos(std::vector<std::string>& vec) {
 		std::cout << "\nNo saved combos.\n";
 	else {
 		std::cout << "\nCurrent Saved Combos:\n";
-		for (const auto& str : vec)
-			std::cout << '\t' << str << '\n';
+		int count {1};
+		for (const auto& str : vec) {
+			std::cout << count << ". " << str << '\n';
+			count++;
+		}
 	}
 
 	listSavedDecks();
 
-	std::cout << "\nWould you like to export your saved combos? (Y/n)\n";
-	char exportChoice {};
-	std::cin >> exportChoice;
-	if (exportChoice == 'Y' || exportChoice == 'y') {
-		std::cout << "\nWhat would you like this deck to be called?\n";
-		std::string exportFilename{};
-		std::getline(std::cin >> std::ws, exportFilename);
+	std::cout << "\n|[E]xport saved combos | [S]elect a deck | [B]ack\n";
+	char inputChoice {};
+	std::cin >> inputChoice;
+	std::cin.ignore(1000, '\n');
 
-		exportCombo(vec, exportFilename);
+	switch (std::toupper(inputChoice)){
+		case 'E': {
+			std::cout << "\nWhat would you like this deck to be called?\n";
+			std::string exportFilename{};
+			std::getline(std::cin >> std::ws, exportFilename);
+
+			exportCombo(vec, exportFilename);
+			break;
+		}
+		case 'S':
+			std::cout << "\nSorry, this feature is coming soon!\n";
+			break;
+		case 'B':
+			return;
 	}
 }
 
