@@ -5,15 +5,6 @@
 #include <filesystem>
 #include <cctype>
 
-void listSavedDecks() {
-	std::cout << "\nSaved Decks:\n";
-	int count {1};
-	for (const auto& deck : std::filesystem::directory_iterator("saved_decks")) {
-		if (deck.is_regular_file() && deck.path().extension() == ".txt")
-			std::cout << count++ << ". " << deck.path().filename() << '\n';
-	}
-}
-
 void createCombo(std::vector<std::string>& vec) {
 	std::cout << "\nEnter the parts you want to combine:\n";
 
@@ -41,6 +32,28 @@ void createCombo(std::vector<std::string>& vec) {
 	}
 }
 
+void listSavedDecks() {
+	std::cout << "\nSaved Decks:\n";
+	int count {1};
+	for (const auto& deck : std::filesystem::directory_iterator("saved_decks")) {
+		if (deck.is_regular_file() && deck.path().extension() == ".txt")
+			std::cout << count++ << ". " << deck.path().filename() << '\n';
+	}
+}
+
+void listSavedCombos(const auto& vec) {
+	if (vec.empty())
+		std::cout << "\nNo saved combos.\n";
+	else {
+		std::cout << "\nCurrent Saved Combos:\n";
+		int count {1};
+		for (const auto& str : vec) {
+			std::cout << count << ". " << str << '\n';
+			count++;
+		}
+	}
+}
+
 void exportCombo(std::vector<std::string>& vec, std::string filename) {
 	std::filesystem::path filepath = std::filesystem::path("saved_decks") / std::filesystem::path(filename + ".txt");
 	std::ofstream outf{ filepath.string() };
@@ -56,17 +69,7 @@ void exportCombo(std::vector<std::string>& vec, std::string filename) {
 }
 
 void viewCombos(std::vector<std::string>& vec) {
-	if (vec.empty())
-		std::cout << "\nNo saved combos.\n";
-	else {
-		std::cout << "\nCurrent Saved Combos:\n";
-		int count {1};
-		for (const auto& str : vec) {
-			std::cout << count << ". " << str << '\n';
-			count++;
-		}
-	}
-
+	listSavedCombos(vec);
 	listSavedDecks();
 
 	std::cout << "\n|[E]xport saved combos | [S]elect a deck | [B]ack\n";
