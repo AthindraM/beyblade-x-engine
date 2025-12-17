@@ -5,7 +5,7 @@
 #include <filesystem>
 #include <cctype>
 
-void createCombo(std::vector<std::string>& vec) {
+void createCombo(auto& vec) {
 	std::cout << "\nEnter the parts you want to combine:\n";
 
 	std::cout << "Blade: ";
@@ -54,7 +54,7 @@ void listSavedCombos(const auto& vec) {
 	}
 }
 
-void exportCombo(std::vector<std::string>& vec, std::string filename) {
+void exportCombo(const auto& vec, std::string filename) {
 	std::filesystem::path filepath = std::filesystem::path("saved_decks") / std::filesystem::path(filename + ".txt");
 	std::ofstream outf{ filepath.string() };
 	
@@ -68,7 +68,7 @@ void exportCombo(std::vector<std::string>& vec, std::string filename) {
 	std::cout << "\nCombo exported! (" << filepath.filename() << ")\n";
 }
 
-void viewCombos(std::vector<std::string>& vec) {
+void viewCombos(auto& vec) {
 	listSavedCombos(vec);
 	listSavedDecks();
 
