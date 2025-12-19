@@ -74,7 +74,7 @@ void viewCombos(auto& vec) {
 
 	std::cout << "\n|[E]xport saved combos | [S]elect a deck | [B]ack\n";
 	char inputChoice {};
-	std::cin >> inputChoice;
+	sfstd::cin >> inputChoice;
 	std::cin.ignore(1000, '\n');
 
 	switch (std::toupper(inputChoice)){
