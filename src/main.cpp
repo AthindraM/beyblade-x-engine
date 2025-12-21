@@ -42,8 +42,9 @@ void listSavedDecks() {
 }
 
 void listSavedCombos(const auto& vec) {
-	if (vec.empty())
+	if (vec.empty()) {
 		std::cout << "\nNo saved combos.\n";
+	}
 	else {
 		std::cout << "\nCurrent Saved Combos:\n";
 		int count {1};
@@ -87,7 +88,6 @@ void viewCombos(auto& vec) {
 			break;
 		}
 		case 'S':
-			std::cout << "\nSorry, this feature is coming soon!\n";
 			break;
 		case 'B':
 			return;
