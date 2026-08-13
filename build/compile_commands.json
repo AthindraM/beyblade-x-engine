@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/Users/athindramitra/dev/Projects/beyblade-x-engine/build",
-  "command": "/usr/bin/clang++   -g -std=gnu++2b -arch arm64 -o CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o -c /Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp",
-  "file": "/Users/athindramitra/dev/Projects/beyblade-x-engine/src/main.cpp",
-  "output": "CMakeFiles/beyblade-x-engine.dir/src/main.cpp.o"
-}
-]
