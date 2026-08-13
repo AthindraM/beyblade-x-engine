@@ -9,6 +9,9 @@ CMakeFiles/
 cmake_install.cmake
 Makefile
 
+# Saved decks
+saved_decks/
+
 # Compiled Binaries
 *.exe
 *.out
