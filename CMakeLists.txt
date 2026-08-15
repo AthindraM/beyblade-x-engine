@@ -11,8 +11,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(BeybladeXEngine
     src/main.cpp
-    src/Combo.cpp
-    src/Deck.cpp
+    src/combo.cpp
+    src/deck.cpp
+    src/database.cpp
 )
 
 target_include_directories(BeybladeXEngine

@@ -1,10 +1,30 @@
-#include "Database.h"
+#include "database.h"
 
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 
+void Database::initializeFiles() {
+  std::filesystem::path comboPath(comboFile);
+  std::filesystem::path deckPath(deckFile);
+
+  std::filesystem::create_directories(comboPath.parent_path());
+
+  std::filesystem::create_directories(deckPath.parent_path());
+
+  if (!std::filesystem::exists(comboPath)) {
+    std::ofstream file(comboPath);
+  }
+
+  if (!std::filesystem::exists(deckPath)) {
+    std::ofstream file(deckPath);
+  }
+}
+
 Database::Database(const std::string &comboFile, const std::string &deckFile)
-    : nextComboId(1), nextDeckId(1), comboFile(comboFile), deckFile(deckFile) {}
+    : nextComboId(1), nextDeckId(1), comboFile(comboFile), deckFile(deckFile) {
+  initializeFiles();
+}
 
 void Database::load() {
   combos.clear();

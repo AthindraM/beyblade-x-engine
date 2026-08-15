@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <string>
 
@@ -15,7 +16,7 @@ public:
   Combo(int id, const std::string &name, const std::string &blade,
         const std::string &ratchet, const std::string &bit);
 
-  int getID() const;
+  int getId() const;
   const std::string &getName() const;
   const std::string &getBlade() const;
   const std::string &getRatchet() const;

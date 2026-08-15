@@ -1,4 +1,4 @@
-#include "Combo.h"
+#include "combo.h"
 
 #include <iostream>
 #include <sstream>
@@ -12,7 +12,7 @@ Combo::Combo(int id, const std::string &name, const std::string &blade,
 
 int Combo::getId() const { return id; }
 
-const std::string &Combo::name() const { return name; }
+const std::string &Combo::getName() const { return name; }
 
 const std::string &Combo::getBlade() const { return blade; }
 
@@ -20,7 +20,7 @@ const std::string &Combo::getRatchet() const { return ratchet; }
 
 const std::string &Combo::getBit() const { return bit; }
 
-void Combo::name(const std::string &name) { this->name = name; }
+void Combo::setName(const std::string &name) { this->name = name; }
 
 void Combo::setBlade(const std::string &blade) { this->blade = blade; }
 

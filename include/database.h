@@ -1,13 +1,14 @@
 #pragma once
 
-#include "Combo.h"
-#include "Deck.h"
+#include "combo.h"
+#include "deck.h"
 
 #include <string>
 #include <vector>
 
 class Database {
 private:
+  void initializeFiles();
   std::vector<Combo> combos;
   std::vector<Deck> decks;
 
