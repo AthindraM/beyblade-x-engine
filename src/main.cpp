@@ -394,9 +394,9 @@ int main() {
 
   while (true) {
     std::cout << "\n";
-    std::cout << "=================================\n";
-    std::cout << "       BEYBLADE COMBO MANAGER\n";
-    std::cout << "=================================\n";
+    std::cout << "================================\n";
+    std::cout << "       BEYBLADE X ENGINE\n";
+    std::cout << "================================\n";
 
     std::cout << "1. Manage Combos\n";
     std::cout << "2. Manage Decks\n";
