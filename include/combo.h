@@ -5,7 +5,7 @@
 class Combo {
 private:
   int id{};
-  std::string comboName{};
+  std::string name{};
   std::string blade{};
   std::string ratchet{};
   std::string bit{};
@@ -16,12 +16,12 @@ public:
         const std::string &ratchet, const std::string &bit);
 
   int getID() const;
-  const std::string &getComboName() const;
+  const std::string &getName() const;
   const std::string &getBlade() const;
   const std::string &getRatchet() const;
   const std::string &getBit() const;
 
-  void setComboName(const std::string &comboName);
+  void setName(const std::string &name);
   void setBlade(const std::string &blade);
   void setRatchet(const std::string &ratchet);
   void setBit(const std::string &bit);
