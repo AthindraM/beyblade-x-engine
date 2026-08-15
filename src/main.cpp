@@ -1,10 +1,9 @@
 #include <iostream>
 
 int main() {
-  std::cout << "[\n----Beyblade X Engine----]\n";
-  std::cout << "===========================\n";
-
   while (true) {
+    std::cout << "[\n----Beyblade X Engine----]\n";
+    std::cout << "===========================\n";
     std::cout << "1. Manage Combos\n";
     std::cout << "2. Manage Decks\n";
     std::cout << "3. Exit\n";
