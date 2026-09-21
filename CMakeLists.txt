@@ -9,6 +9,9 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# ---------------------------------------------------------------------------
+# Existing CRUD app (combos / decks)
+# ---------------------------------------------------------------------------
 add_executable(BeybladeXEngine
     src/main.cpp
     src/combo.cpp
@@ -21,6 +24,9 @@ target_include_directories(BeybladeXEngine
         ${PROJECT_SOURCE_DIR}/include
 )
 
+# ---------------------------------------------------------------------------
+# Third-party dependencies for the physics sim / renderer
+# ---------------------------------------------------------------------------
 include(FetchContent)
 
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
@@ -45,6 +51,10 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(glfw glm)
 
+# GLAD is vendored (pre-generated for GL 3.3 core, no extensions) rather than
+# fetched, since generation depends on the Khronos registry rather than a
+# straightforward git checkout. Regenerate under third_party/glad if a newer
+# GL feature set is needed later.
 add_library(glad STATIC
     third_party/glad/src/gl.c
 )
@@ -54,3 +64,30 @@ target_include_directories(glad
         ${PROJECT_SOURCE_DIR}/third_party/glad/include
 )
 
+# ---------------------------------------------------------------------------
+# Physics sim executable
+# ---------------------------------------------------------------------------
+add_executable(BeybladeSim
+    src/sim_main.cpp
+    src/render/window.cpp
+    src/render/shader.cpp
+)
+
+target_include_directories(BeybladeSim
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/include
+)
+
+target_link_libraries(BeybladeSim
+    PRIVATE
+        glfw
+        glad
+        glm::glm
+)
+
+# Copy shaders next to the sim binary so relative paths work from the build dir.
+add_custom_command(TARGET BeybladeSim POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${PROJECT_SOURCE_DIR}/shaders
+        $<TARGET_FILE_DIR:BeybladeSim>/shaders
+)
