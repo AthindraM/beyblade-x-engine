@@ -65,6 +65,35 @@ target_include_directories(glad
 )
 
 # ---------------------------------------------------------------------------
+# Physics types (no rendering dependency)
+# ---------------------------------------------------------------------------
+add_library(BeybladePhysics STATIC
+    src/physics/stadium.cpp
+    src/physics/rigid_body.cpp
+    src/physics/physics_world.cpp
+)
+
+target_include_directories(BeybladePhysics
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/include
+)
+
+target_link_libraries(BeybladePhysics
+    PUBLIC
+        glm::glm
+)
+
+# Headless harness: exercises the physics types with no window/GL at all.
+add_executable(BeybladePhysicsTest
+    src/physics_main.cpp
+)
+
+target_link_libraries(BeybladePhysicsTest
+    PRIVATE
+        BeybladePhysics
+)
+
+# ---------------------------------------------------------------------------
 # Physics sim executable
 # ---------------------------------------------------------------------------
 add_executable(BeybladeSim
@@ -83,6 +112,7 @@ target_link_libraries(BeybladeSim
         glfw
         glad
         glm::glm
+        BeybladePhysics
 )
 
 # Copy shaders next to the sim binary so relative paths work from the build dir.
