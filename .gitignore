@@ -1,5 +1,6 @@
 /build
 /data
 
+.DS_Store
 /src/.DS_Store
 /include/.DS_Store
